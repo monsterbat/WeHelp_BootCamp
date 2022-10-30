@@ -18,7 +18,7 @@ values ('Bertholdt', 'Bertholdt', 'Hoover');
 insert into member (name, username, password)
 values ('Annie', 'Annie', 'Leonhart');
 ```
-![Require3_1](/image/Require3_1.png)
+![Require3_1](/Stage1_Week5/image/Require3_1.png)
 
 `
 3-2
@@ -27,7 +27,7 @@ values ('Annie', 'Annie', 'Leonhart');
 ```sql
 select * from member;
 ```
-![Require3_2](/image/Require3_2.png)
+![Require3_2](/Stage1_Week5/image/Require3_2.png)
 
 `
 3-3
@@ -36,13 +36,13 @@ select * from member;
 ```sql
 select * from member by time desc;
 ```
-![Require3_3](/image/Require3_3.png)
+![Require3_3](/Stage1_Week5/image/Require3_3.png)
 
 #### 使用 SELECT 指令取得 member 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。( 並非編號 2、3、4 的資料，而是排序後的第 2 ~ 4 筆資料 )
 ```sql
 select * from member by time desc limit 1,3;
 ```
-![Require3_4](/image/Require3_4.png)
+![Require3_4](/Stage1_Week5/image/Require3_4.png)
 
 `
 3-4
@@ -51,7 +51,7 @@ select * from member by time desc limit 1,3;
 ```sql
 select * from member where username='test';
 ```
-![Require3_5](/image/Require3_5.png)
+![Require3_5](/Stage1_Week5/image/Require3_5.png)
 
 `
 3-5
@@ -60,7 +60,7 @@ select * from member where username='test';
 ```sql
 select * from member where username='test' and password='test';
 ```
-![Require3_6](/image/Require3_6.png)
+![Require3_6](/Stage1_Week5/image/Require3_6.png)
 
 `
 3-6
@@ -69,7 +69,7 @@ select * from member where username='test' and password='test';
 ```sql
 update member set name='test2' where username='test';
 ```
-![Require3_7](/image/Require3_7.png)
+![Require3_7](/Stage1_Week5/image/Require3_7.png)
 
 ## Require 4
 
@@ -80,7 +80,7 @@ update member set name='test2' where username='test';
 ```sql
 select count(id) from member;
 ```
-![Require4_1](/image/Require4_1.png)
+![Require4_1](/Stage1_Week5/image/Require4_1.png)
 
 `
 4-2
@@ -89,7 +89,7 @@ select count(id) from member;
 ```sql
 select sum(follow_count) from member;
 ```
-![Require4_2](/image/Require4_2.png)
+![Require4_2](/Stage1_Week5/image/Require4_2.png)
 
 `
 4-3
@@ -98,7 +98,7 @@ select sum(follow_count) from member;
 ```sql
 select avg(follow_count) from member;
 ```
-![Require4_3](/image/Require4_3.png)
+![Require4_3](/Stage1_Week5/image/Require4_3.png)
 
 
 ## Require 5
@@ -111,7 +111,7 @@ select avg(follow_count) from member;
 select member.name, message.content from member
 inner join message on member.id=message.member_id;
 ```
-![Require5_1](/image/Require5_1.png)
+![Require5_1](/Stage1_Week5/image/Require5_1.png)
 
 `
 5-2
@@ -122,7 +122,7 @@ select member.name, message.content from member
 inner join message on member.id=message.member_id
 where member.username='test';
 ```
-![Require5_2](/image/Require5_2.png)
+![Require5_2](/Stage1_Week5/image/Require5_2.png)
 
 `
 5-3
@@ -133,4 +133,4 @@ select ave(like_count) from member
 inner join member on message.member_id=member.id
 where member.username='test';
 ```
-![Require5_3](/image/Require5_3.png)
+![Require5_3](/Stage1_Week5/image/Require5_3.png)
