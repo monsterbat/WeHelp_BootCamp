@@ -1,0 +1,208 @@
+/* backgroung */
+body{
+    background-color:rgba(139,168,152);
+    margin: 0%;
+    opacity: 0.9;
+}
+
+/* Top */
+.top_list{
+    display: flex;
+}
+
+.top_title_left{
+    flex:none;
+    justify-content:start;
+    width:110px;
+    margin:10px;
+    color:rgb(0, 0, 0);
+    /* background-color: pink; */
+
+}
+
+.top_title_right_desktop{
+
+    display: flex;
+    justify-content:flex-end;
+    flex:auto;
+    width:110px;
+    margin:10px;
+    color:rgb(0, 0, 0);
+    /* background-color: pink; */
+}
+.top_title_right_mobile{
+    display: none;
+    justify-content:flex-end;
+    /* flex:auto; */
+    /* width:110px;
+    margin:10px; 
+    color:rgb(0, 0, 0);
+    /* background-color: pink; */
+    
+}
+
+.top_items_right{
+    flex:none;
+    display:block;
+    width:100px;
+    /* margin:10px; */
+    text-align: center;
+}
+/* mid */
+
+.welcome_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-image: url("image/SpyFamily_01.jpeg");
+    background-size: cover;
+    background-position: center 25%;
+    text-shadow: 0.2em 0.2em 0.01em white;
+    text-shadow: -0.2em 0.2em 0.01em white;
+    text-shadow: 0.2em -0.2em 0.01em white;
+    text-shadow: -0.2em -0.2em 0.01em white;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.welcome_title_text{
+    width:300px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+
+/* conect */
+
+.list_leader_t1{
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_t1{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    
+}
+
+.list_t1_text{
+    flex:auto;
+    width: 500px;
+    height: 50px;
+    
+    background-color: rgb(55, 173, 159);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_t1_image{
+    flex:auto;
+    width: 80px;
+    height: 50px;
+
+    /* background-color: pink; */
+    justify-content: center;
+}
+/* T2 */
+.list_leader_t2{
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_t2{
+    /* display: flex; 不行*/
+    justify-content: center;
+    margin: 10px;
+}
+
+.list_t2_text{
+    /* display: block; */
+    flex:auto;
+    width: 280px;
+
+    background-color:rgb(55, 173, 159);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_t2_image{
+    display: block;
+    flex:auto;
+    width: 280px;
+    
+
+    justify-content: center;
+}
+
+@media (max-width:1200px){
+    .list_leader_t1{       
+        margin-left:5%;
+        margin-right:5%;
+    }
+
+    .list_t1{
+        
+        width: 50%;
+    }
+
+    .list_leader_t2{       
+        flex-wrap: wrap;
+        /* margin-left:.5%;
+        margin-right:2.5%; */
+    }
+
+    .list_t2{
+        width: 45%;/* 怪怪 */
+
+    }
+    .list_t2_text{
+        width: 100%;
+    }
+    .list_t2_image{
+        width: 100%;
+    }
+
+    
+}
+
+@media (max-width:600px){
+
+    .list_leader_t1{       
+        flex-wrap: wrap;
+
+    }
+    .list_t1{
+        width: 100%;
+    }
+
+    .list_t2{
+        width: 90%;/* 怪怪 */
+
+    }
+    .list_t2_text{
+        width: 100%;
+    }
+    .list_t2_image{
+        width: 100%;
+    }
+    .top_title_right_mobile{
+        display:block;
+    }
+    .top_items_right{
+        display:none;
+    }
+}
