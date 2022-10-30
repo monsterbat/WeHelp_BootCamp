@@ -1,0 +1,19 @@
+.welcome_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: rgb(149, 149, 218);
+}
+
+.signinPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatePage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

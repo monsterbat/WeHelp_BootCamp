@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta charset="utf-8" />
+        <title>WeHelp BootCamp Mission week 4</title>
+        <link rel="stylesheet", type="text/css", href="wehelp_w4.css" />
+
+    </head>
+    <body>
+        <div class="welcome_title">
+            歡迎光臨，請輸入帳號密碼
+        </div>
+        <div class="signinPage">
+            登入系統
+        </div>
+        <form action="/signin" method="POST">
+            <div class="signinPage">
+                帳號
+                <input type="text"
+                placeholder="輸入帳號"  
+                name="account"/>
+            </div>
+            <div class="signinPage">
+                密碼
+                <input type="password"
+                placeholder="輸入密碼" 
+                name="passcode"  />
+            </div>
+            <div class="signinPage">
+            <button>
+                登入
+            </button>
+            </div>
+        </form>
+        <br/>
+
+            <div class="calculatePage">
+                計算正整數的平方
+            </div>
+            <div class="calculatePage">
+                正整數<input type="text" name="number" id="inputNumber"/>
+            </div>
+            <div  class="calculatePage">
+                <button onclick="calculateSquare()">
+                    計算
+                </button>
+            </div>
+
+
+        <script>
+            function calculateSquare() {
+            let inputNumber=document.getElementById("inputNumber").value;
+            let newURL=window.location.href+"square/"+inputNumber;
+            window.location.href=newURL;
+        }
+        </script>
+    </body>
+</html>
