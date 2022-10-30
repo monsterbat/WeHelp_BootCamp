@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta charset="utf-8" />
+        <title>WeHelp BootCamp Mission week 6</title>
+        <link rel="stylesheet", type="text/css", href="/wehelp_w6.css" />
+    </head>
+
+    <body>
+
+        <div class="welcomeTitle">
+            歡迎光臨，這是會員首頁
+        </div>
+        <br>
+        <div class="textPage">
+            {{member_name}}，歡迎登入系統
+        </div>
+        <div class="textPage">
+            <a href="/signout">登出系統</a>
+        </div>
+        <br>
+
+        <div class="textPage">
+            快來留言吧
+        </div>
+        <form action="/content" method="POST">
+        <div class="textPage">
+            內容<input type="text"
+            name="memberContent">
+        </div>
+        <div class="textPage">
+            <button>
+                送出
+            </button> 
+        </div>
+        <br>
+        </form>
+        <div class="textPage" id="memberContentShow">
+            
+        </div>
+        <div >
+        {% for member_connect_HTML_ls in member_connect_HTML%}
+            <div class="textPage">
+                {{member_connect_HTML_ls[0]}}:{{member_connect_HTML_ls[1]}}
+            </div>
+        {% endfor %}
+        </div>
+    </body>
+</html>
