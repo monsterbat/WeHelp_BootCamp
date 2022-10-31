@@ -1,0 +1,185 @@
+<!-- 
+    WeHelp BootCamp Assignemt - Week 3  Task 3
+    Purpose: 1. Use #ftech to get data, 
+             2. Use #document.getElementById() and #appendChild() push the data
+             3. Use #aspect-ratio: 1/0.7; to optimization the CSS code
+    Release date: 2022/10/07
+    Authored by SC Siao
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta charset="utf-8" />
+        <title>WeHelp BootCamp Mission week 3</title>
+        <link rel="stylesheet", type="text/css", href="week_w3_css.css" />
+
+    </head>
+    <!-- #onload can treger the function once web open -->
+    <body onload="getData();">
+        <script>
+            function getData(){
+                // fetch the data from Net
+                fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json").then(function(response){
+                    console.log(response);
+                    return response.json();
+                }).then(function(data){
+                    // get the data into array
+                    data=data["result"]["results"]
+                    console.log(data);
+                    let TPC_attraction_information={}
+                    for (let i=0;i<data.length;i++){
+                        let attraction_information=[];
+                        // Singal data list
+                        let attraction=data[i];
+                        console.log(attraction);
+                        // attraction_stitle
+                        let attraction_stitle=attraction["stitle"];
+                        attraction_information.push(attraction_stitle)
+                        console.log(attraction_stitle);
+                        // attraction_address
+                        let attraction_addressFull=attraction["address"];
+                        let attraction_addressReTPC=attraction_addressFull.replace("臺北市  ","");
+                        let attraction_address="";
+                        for (let wordCount=0;wordCount<3;wordCount++){
+                            attraction_address=attraction_address+attraction_addressReTPC[wordCount];
+                        }
+                        attraction_information.push(attraction_address)
+                        // attraction_latitude
+                        let attraction_latitude=attraction["latitude"]
+                        attraction_information.push(attraction_latitude)
+                        // attraction_longitude
+                        let attraction_longitude=attraction["longitude"]
+                        attraction_information.push(attraction_longitude)
+                        // attraction_Pic
+                        let attraction_multiPic=attraction["file"]
+                        let firstPic_url=""
+                        let filter_word_1=".jpg"
+                        let filter_word_2=".JPG"
+                        for(let urlBit=0;urlBit<attraction_multiPic.length;urlBit++){
+                            firstPic_url=firstPic_url+attraction_multiPic[urlBit]
+                            if(firstPic_url.indexOf(filter_word_1)!=-1){
+                                break
+                            }
+                            if(firstPic_url.indexOf(filter_word_2)!=-1){
+                                break
+                            }
+                        }
+                        attraction_information.push(firstPic_url)
+                        console.log(attraction_information)
+                        TPC_attraction_information[i]=attraction_information;
+                    }
+                    let testi=TPC_attraction_information[8][0]
+                        data_l=data.length
+                        for(let ls_1=0;ls_1<2;ls_1++){
+                            // image
+                            let newImage=document.createElement("img");
+                            newImage.src = TPC_attraction_information[ls_1][4];
+                            // console.log(newImage.src)
+                            newImage.className = "list_t1_image";
+                            let imageId="list_t1_"+ls_1;
+                            // newImage.appendChild(newImage.src);
+                            let attractionImage=document.getElementById(imageId);
+                            attractionImage.appendChild(newImage);
+                            // describe
+                            let newDiv=document.createElement("div");
+                            newDiv.id = "list_t1_"+ls_1;
+                            newDiv.className = "list_t1_text";
+                            let textNode = document.createTextNode(TPC_attraction_information[ls_1][0]);
+                            let rr=newDiv.appendChild(textNode);
+                            console.log(rr)
+                            document.getElementById(newDiv.id).appendChild(newDiv);
+                        }
+                        for(let ls_2=2;ls_2<10;ls_2++){
+                            // image
+                            let newImage_2=document.createElement("img");
+                            newImage_2.src = TPC_attraction_information[ls_2][4];
+                            // console.log(newImage_2.src)
+                            newImage_2.className = "list_t2_image";
+                            let imageId_2="list_t2_"+ls_2;
+                            // newImage_2.appendChild(newImage_2.src);
+                            let attractionImage=document.getElementById(imageId_2);
+                            attractionImage.appendChild(newImage_2);
+                            // describe
+                            let newDiv_2=document.createElement("div");
+                            newDiv_2.id = "list_t2_"+ls_2;
+                            newDiv_2.className = "list_t2_text";
+                            let textNode_2 = document.createTextNode(TPC_attraction_information[ls_2][0]);
+                            let rr=newDiv_2.appendChild(textNode_2);
+                            console.log(rr)
+                            document.getElementById(newDiv_2.id).appendChild(newDiv_2);
+                        }
+                });
+            }
+        </script>
+        <!-- title (left top side) -->
+        <div class="top_list">
+            <div class="top_title_left">My Website</div>
+            <div class="top_title_right_desktop">
+                <div class="top_items_right">Items 1</div>
+                <div class="top_items_right">Items 2</div>
+                <div class="top_items_right">Items 3</div>
+                <div class="top_items_right">Items 4</div>
+            </div>
+            <div class="top_title_right_mobile">
+                <img src="image/hamburger_icon.png" width="40" />
+
+            </div>
+        </div>
+
+        <!-- Horizontally and Vertically in center -->
+    
+        <div class="welcome_title">
+            <div class="welcome_title_text">
+                台北市政府景點
+            </div>
+
+        </div>
+        <br>
+
+        <div class="list_leader_t1">
+            <div id="list_t1_0" class="list_t1">
+
+            </div>    
+
+            <div id="list_t1_1" class="list_t1">
+
+            </div>    
+        </div>
+
+
+        <div class="list_leader_t2">
+            <div id="list_t2_2" class="list_t2">
+
+            </div>   
+            <div id="list_t2_3" class="list_t2">
+
+            </div> 
+            <div id="list_t2_4" class="list_t2">
+
+            </div> 
+            <div id="list_t2_5" class="list_t2">
+
+            </div> 
+     
+                
+        </div>
+        <div class="list_leader_t2">
+            <div id="list_t2_6" class="list_t2">
+
+            </div>   
+            <div id="list_t2_7" class="list_t2">
+
+            </div> 
+            <div id="list_t2_8" class="list_t2">
+
+            </div> 
+            <div id="list_t2_9" class="list_t2">
+
+            </div>                
+        </div>
+
+
+    </body>
+</html>
