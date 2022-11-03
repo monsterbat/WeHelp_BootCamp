@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta charset="utf-8" />
+        <title>WeHelp BootCamp Mission week 7</title>
+        <link rel="stylesheet", type="text/css", href="/wehelp_w7.css" />
+    </head>
+
+    <body>
+        <script>
+            // Search name function
+            function getInformation(){
+                let searchMember=document.getElementById("search").value;
+                let webURL=document.URL;
+                let webHomeURL=webURL.replace("member","");
+                let url=webHomeURL+"api/member?username="+searchMember
+                fetch(url,{method:"GET"})
+                .then
+                (function(response){
+                    return response.json();
+                })
+                .then(function(data)
+                {
+                    console.log(data)
+                    let responData=data["data"]
+                    if (responData==null){
+                        let doneSearch=document.getElementById("searchResult")
+                        doneSearch.innerHTML='<div id="searchResult" class="textPage">查無此人</div>'
+                    }
+                    else{
+                        // id, name, username 
+                        let dataId=data["data"]["id"]
+                        let dataName=data["data"]["name"]
+                        let dataUsername=data["data"]["username"]
+                        let dataRequire=dataName+"("+dataUsername+")"
+
+                        // Create element
+                        let doneSearch=document.getElementById("searchResult")
+                        doneSearch.innerHTML='<div id="searchResult" class="textPage">'+dataRequire+'</div>'
+                        
+                    }
+
+
+
+                    
+                });
+            }
+            // Rename function
+            function getRename(){
+                let renameMember=document.getElementById("rename").value;
+                let webURL=document.URL;
+                let webHomeURL=webURL.replace("member","");
+                let url=webHomeURL+"api/member"
+                let data={
+                    "name":rename.value
+                }
+                console.log(url)
+                fetch(url,{
+                    method:"PATCH",
+                    // credentials:"include",
+                    body:JSON.stringify(data),
+                    // cache:"no-cache",
+                    headers:new Headers({
+                        "Content-type":"application/json"
+                    })
+                })
+                .then
+                (function(response){
+                    return response.json();
+                })
+                .then(function(data)
+                {           
+                    console.log(data["ok"])         
+                    if (data["ok"]==true){
+                        let doneSign=renameMember=document.getElementById("doneSign");
+                        doneSign.innerHTML='<div id="doneSign" class="textPage">"更新成功</div>"'
+                    }else{
+                        let doneSign=renameMember=document.getElementById("doneSign");
+                        doneSign.innerHTML='<div id="doneSign" class="textPage">"更新失敗</div>"'
+                    }
+                });
+            }
+
+
+        </script>
+
+        <div class="welcomeTitle">
+            歡迎光臨，這是會員首頁
+        </div>
+        <br>
+        <div class="textPage">
+            {{member_name}}，歡迎登入系統
+        </div>
+        <div class="textPage">
+            <a href="/signout">登出系統</a>
+        </div>
+        <br>
+        <!-- Search -->
+        <div class="textPage">
+            查詢會員姓名
+        </div>
+        <div class="textPage">
+            <input type="text" placeholder="請輸入帳號" name="memberSearch" id="search">
+            <button onclick="getInformation();">
+                查詢
+            </button>
+        </div>
+        <div>
+            <div id="searchResult" class="textPage">
+                <br>
+            </div>
+        </div>
+        <br>
+        <!-- Rename -->
+        <div class="textPage">
+            更新我的姓名
+        </div>
+        <div class="textPage">
+            <input type="text" placeholder="請輸入姓名" name="memberRename" id="rename">
+            <button onclick="getRename();">
+                更新
+            </button>
+        </div>
+        <div>
+            <div id="doneSign" class="textPage">
+                <br>
+            </div>
+        </div>
+        <br>
+        <!-- Message -->
+        <div class="textPage">
+            快來留言吧
+        </div>
+        <form action="/content" method="POST">
+        <div class="textPage">
+            內容<input type="text"
+            name="memberContent">
+        </div>
+        <div class="textPage">
+            <button>
+                送出
+            </button> 
+        </div>
+        <br>
+        </form>
+        <div class="textPage" id="memberContentShow">
+            
+        </div>
+        <div >
+        {% for member_connect_HTML_ls in member_connect_HTML%}
+            <div class="textPage">
+                {{member_connect_HTML_ls[0]}}:{{member_connect_HTML_ls[1]}}
+            </div>
+        {% endfor %}
+        </div>
+    </body>
+</html>

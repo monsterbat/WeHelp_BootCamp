@@ -1,0 +1,31 @@
+.welcomeTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: rgb(149, 149, 218);
+}
+
+.titlePage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signinPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatePage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

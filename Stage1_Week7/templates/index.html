@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta charset="utf-8" />
+        <title>WeHelp BootCamp Mission week 7</title>
+        <link rel="stylesheet", type="text/css", href="/wehelp_w7.css" />
+
+    </head>
+    <body>
+        <div class="welcomeTitle">
+            歡迎光臨，請輸入帳號密碼
+        </div>
+        <br>
+        <!-- Sing up -->
+        <div class="titlePage">
+            註冊帳號
+        </div>
+        <form action="/signup" method="POST">
+            <div class="textPage">
+                姓名
+                <input type="text"
+                placeholder="輸入姓名"  
+                name="signupName"/>
+            </div>
+
+            <div class="textPage">
+                帳號
+                <input type="text"
+                placeholder="輸入帳號"  
+                name="signupAccount"/>
+            </div>
+            <div class="textPage">
+                密碼
+                <input type="password"
+                placeholder="輸入密碼" 
+                name="SignupPassword"/>
+            </div>
+            <div class="textPage">
+            <button>
+                註冊
+            </button>   
+            </div>
+        </form>
+        <br>
+        <!-- Sign in -->
+        <div class="titlePage">
+            登入系統
+        </div>
+        <form action="/signin" method="POST">
+            <div class="textPage">
+                帳號
+                <input type="text"
+                placeholder="輸入帳號"  
+                name="account"/>
+            </div>
+            <div class="textPage">
+                密碼
+                <input type="password"
+                placeholder="輸入密碼" 
+                name="password"/>
+            </div>
+            <div class="textPage">
+            <button>
+                登入
+            </button>
+            </div>
+        </form>
+
+         <script>
+            function calculateSquare() {
+            let inputNumber=document.getElementById("inputNumber").value;
+            let newURL=window.location.href+"square/"+inputNumber;
+            window.location.href=newURL;
+        }
+        </script>
+    </body>
+</html>
