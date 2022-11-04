@@ -13,7 +13,7 @@ from flask import redirect
 from flask import render_template
 from flask import session
 import mysql.connector
-import json
+from flask import jsonify 
 
 
 # Separate program
@@ -213,7 +213,7 @@ def member_search():
     if account_cookie=="fail" or name_cookie=="fail":
         print("Fail method")
         data=[]
-        data=json.dumps(search_data_form(data))        
+        data=jsonify(search_data_form(data))        
     else:
         username=request.args.get("username")
         username=str(username)
@@ -224,7 +224,7 @@ def member_search():
         sql_username=(username,)
         # print(sql_username)
         data=query_data(sql,sql_username)
-        data=json.dumps(search_data_form(data))
+        data=jsonify(search_data_form(data))
         print("User "+account_cookie+" is searchong "+username+"'s name.")
     return data
 
@@ -236,7 +236,7 @@ def member_rename():
 
     if account_cookie=="fail" or name_cookie=="fail":
         print("Fail method")
-        data=json.dumps({"error":True})
+        data=jsonify({"error":True})
     else:
         req_name=request.get_json()
         rename=req_name["name"]
@@ -249,5 +249,5 @@ def member_rename():
         insert_or_update_data(sql,sql_var)
         print("Name has been renamed from "+name_cookie+" to "+rename)
         session["name"]=rename
-        data=json.dumps({"ok":True})
+        data=jsonify({"ok":True})
     return data
